@@ -1,20 +1,29 @@
 import * as vscode from "vscode";
-import retrieveReference from "../lib/retrieveReference";
+import { getReferenceFilePath } from "../lib/referenceFolder";
+
+/**
+ * Open the given file path in the editor
+ */
+function openFileInEditor(path: string) {
+	vscode.workspace.openTextDocument(path).then((doc) => {
+		vscode.window.showTextDocument(doc);
+	});
+}
 
 /**
  * Go to reference of the current file.
- * A reference is a file that has the same path as the current file,
- * in ./src/overrides and ./node_modules
+ *
+ * A reference is a file that has a relative path from ./src/overrides
+ * to ./node_modules
  */
-export default async () => {
-	const referenceFilePath = await retrieveReference();
+export default () => {
+	const currentFilePath = vscode.window.activeTextEditor?.document.uri.fsPath;
 
-	if (!referenceFilePath) {
-		return;
+	if (currentFilePath) {
+		const referenceFilePath = getReferenceFilePath(currentFilePath)
+
+		if (referenceFilePath) {
+			openFileInEditor(referenceFilePath);
+		}
 	}
-
-	// open the reference file
-	vscode.workspace.openTextDocument(referenceFilePath).then((doc) => {
-		vscode.window.showTextDocument(doc);
-	});
 };

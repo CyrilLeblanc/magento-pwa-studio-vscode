@@ -3,6 +3,7 @@
   "displayName": "Magento PWA studio",
   "description": "Magento PWA studio VsCode implementation",
   "version": "0.0.1",
+  "publisher": "CyrilLeblanc",
   "author": {
     "name": "Cyril Leblanc",
     "email": "cyril_leblanc@outlook.fr"
@@ -21,6 +22,7 @@
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
+  "l10n": "./l10n",
   "contributes": {
     "commands": [
       {
