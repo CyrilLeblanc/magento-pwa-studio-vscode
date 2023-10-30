@@ -1,0 +1,9 @@
+{
+    "Composes": {
+        "prefix": "cp",
+        "body": [
+            "composes: $1 from global;"
+        ],
+        "description": "Composes without repetition"
+    }
+}

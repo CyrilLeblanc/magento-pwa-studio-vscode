@@ -29,6 +29,12 @@
         "command": "magento-pwa-studio.goToReference",
         "title": "Magento PWA studio: Go to reference"
       }
+    ],
+    "snippets": [
+      {
+        "language": "css",
+        "path": "./snippets/css.json"
+      }
     ]
   },
   "scripts": {
